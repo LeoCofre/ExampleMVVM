@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.examplemvvm.databinding.ActivityMainBinding
+import com.example.examplemvvm.viewmodel.QuoteViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        quoteViewModel.onCreate()
 
         quoteViewModel.quoteModel.observe(this, Observer {currentQuote ->
             binding.tvQuote.text = currentQuote.quote
