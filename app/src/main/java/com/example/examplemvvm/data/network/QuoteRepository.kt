@@ -2,14 +2,17 @@ package com.example.examplemvvm.data.network
 
 import com.example.examplemvvm.data.model.QuoteModel
 import com.example.examplemvvm.data.model.QuoteProvider
+import javax.inject.Inject
 
-class QuoteRepository {
+class QuoteRepository @Inject constructor(
+    private val api: QuoteService,
+    private val quoteProvider: QuoteProvider
+) {
 
-    private val api = QuoteService()
 
-    suspend fun getAllQuotes():List<QuoteModel>{
+    suspend fun getAllQuotes(): List<QuoteModel> {
         val response = api.getQuotes()
-        QuoteProvider.quotes = response
+        quoteProvider.quotes = response
         return response
     }
 }
