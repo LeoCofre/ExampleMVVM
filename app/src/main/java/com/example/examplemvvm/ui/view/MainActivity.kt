@@ -8,13 +8,11 @@ import androidx.lifecycle.Observer
 import com.example.examplemvvm.databinding.ActivityMainBinding
 import com.example.examplemvvm.viewmodel.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var binding: ActivityMainBinding
 
     private val quoteViewModel: QuoteViewModel by viewModels()
 
@@ -26,8 +24,12 @@ class MainActivity : AppCompatActivity() {
         quoteViewModel.onCreate()
 
         quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
-            binding.tvQuote.text = currentQuote.quote
-            binding.tvAuthor.text = currentQuote.author
+            if (currentQuote != null) {
+                binding.tvQuote.text = currentQuote.quote
+            }
+            if (currentQuote != null) {
+                binding.tvAuthor.text = currentQuote.author
+            }
 
         })
         quoteViewModel.isLoading.observe(this, Observer {

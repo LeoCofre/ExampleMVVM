@@ -16,7 +16,7 @@ class QuoteViewModel @Inject constructor(
     private val getRandomQuoteUseCase: GetRandomQuoteUseCase
 ) : ViewModel() {
 
-    val quoteModel = MutableLiveData<QuoteModel>()
+    val quoteModel = MutableLiveData<QuoteModel?>()
     val isLoading = MutableLiveData<Boolean>()
 
 
@@ -38,7 +38,7 @@ class QuoteViewModel @Inject constructor(
         isLoading.postValue(true)
         val quote = getRandomQuoteUseCase()
         if (quote != null) {
-            quoteModel.postValue(quote!!)
+            quoteModel.postValue(quote)
         }
         isLoading.postValue(false)
     }
