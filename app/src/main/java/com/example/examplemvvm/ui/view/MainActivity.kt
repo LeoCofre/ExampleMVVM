@@ -8,11 +8,13 @@ import androidx.lifecycle.Observer
 import com.example.examplemvvm.databinding.ActivityMainBinding
 import com.example.examplemvvm.viewmodel.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+     private lateinit var binding: ActivityMainBinding
+
 
     private val quoteViewModel: QuoteViewModel by viewModels()
 
