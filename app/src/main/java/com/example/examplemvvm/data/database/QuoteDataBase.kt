@@ -8,6 +8,7 @@ import com.example.examplemvvm.data.database.entities.QuoteEntity
 @Database(entities = [QuoteEntity::class], version = 1)
 
 abstract class QuoteDataBase : RoomDatabase() {
+
     abstract fun getQuoteDao() :QuoteDao
 
 }
